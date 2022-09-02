@@ -1,0 +1,10 @@
+﻿ //now randomize stats
+        if (gClass.type == "normal"){
+            gClass.damage = Random.Range(10, 40) + ramp + (int)(10 * rarity);
+            //implement something that reduces rof with higher damage
+            gClass.rof = Random.Range(80, 800) + (ramp * 20) + (int)(100 * rarity) - Mathf.Clamp((gClass.damage *5), 0, 300);
+            
+        }
+        if (gClass.type == "double"){
+            
+        }

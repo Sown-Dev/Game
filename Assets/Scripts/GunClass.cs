@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class GunClass : MonoBehaviour
-{
+public abstract class GunClass : MonoBehaviour{
+    //Stores all relevant info for the gun
+    public GunData data;
+    
     //Unique ID used to compare weapons to see if they are the same
     public int ID;
     
@@ -26,7 +28,7 @@ public abstract class GunClass : MonoBehaviour
     
     //Quality of the gun. Higher quality will be more valuable when selling/ buying, etc.
     public int quality;
-    
-    
+    public float rarity;
+
 
 }
