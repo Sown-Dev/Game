@@ -43,28 +43,11 @@ public class ShotGun : GunClassMain
         }
     }
 
-    void SpawnBullet(Vector3 pos){
-        GameObject _bullet = Instantiate(bullet, pos, Quaternion.Euler(SpreadDirection()));
-        _bullet.GetComponent<Rigidbody2D>().velocity =
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().velocity;
-        _bullet.GetComponent<Rigidbody2D>().angularVelocity = GameObject.FindGameObjectWithTag("Player")
-            .GetComponent<Rigidbody2D>().angularVelocity;
-        _bullet.GetComponent<Bullet>().Init(damage, extraVel, col);
-        Destroy(_bullet, 2f);
-    }
-    Vector3 SpreadDirection(){
-        Vector3 targetPos=transform.eulerAngles;
-        targetPos = new Vector3(
-            targetPos.x,
-            targetPos.y,
-            targetPos.z + Random.Range(-spread, spread)
-        );
-        return targetPos;
-    }
+    
 
     void AdjustStats(){
         damage /= 4;
-        spread *= 3.5f;
+        spread *= 3.6f;
         rof /= 3.3f;
         extraVel /= 2;
         pellets *= 2;

@@ -14,6 +14,7 @@ public class Shooting : MonoBehaviour{
     public GameObject NormalGun;
     public GameObject DoubleGun;
     public GameObject ShotGun;
+    public GameObject FlakGun;
 
     void Start(){ }
 
@@ -131,6 +132,9 @@ public class Shooting : MonoBehaviour{
         if (wep.type == ShotGun.GetComponent<GunClass>().type){
             obj = Instantiate(ShotGun, leftHolder.transform);
         }
+        if (wep.type == FlakGun.GetComponent<GunClass>().type){
+            obj = Instantiate(FlakGun, leftHolder.transform);
+        }
 
         GunClass gClass = obj.GetComponent<GunClass>();
         gClass.data = wep;
@@ -155,6 +159,9 @@ public class Shooting : MonoBehaviour{
         }
         if (wep.type == ShotGun.GetComponent<GunClass>().type){
             obj = Instantiate(ShotGun, rightHolder.transform);
+        }
+        if (wep.type == FlakGun.GetComponent<GunClass>().type){
+            obj = Instantiate(FlakGun, rightHolder.transform);
         }
 
         GunClass gClass = obj.GetComponent<GunClass>();

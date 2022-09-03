@@ -16,7 +16,7 @@ public class DoubleGun : GunClassMain
     Pellets
     */
 
-    private float offset = 0.04f;
+    private float offset = 0.06f;
     private void Start(){
         float intensity = (col.r + col.g + col.b) / 3f;
         float factor = 6/intensity;
@@ -43,24 +43,8 @@ public class DoubleGun : GunClassMain
         }
     }
 
-    void SpawnBullet(Vector3 pos){
-        GameObject _bullet = Instantiate(bullet, pos, Quaternion.Euler(SpreadDirection()));
-        _bullet.GetComponent<Rigidbody2D>().velocity =
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().velocity;
-        _bullet.GetComponent<Rigidbody2D>().angularVelocity = GameObject.FindGameObjectWithTag("Player")
-            .GetComponent<Rigidbody2D>().angularVelocity;
-        _bullet.GetComponent<Bullet>().Init(damage, extraVel, col);
-        Destroy(_bullet, 2f);
-    }
-    Vector3 SpreadDirection(){
-        Vector3 targetPos=transform.eulerAngles;
-        targetPos = new Vector3(
-            targetPos.x,
-            targetPos.y,
-            targetPos.z + Random.Range(-spread, spread)
-        );
-        return targetPos;
-    }
+    
+   
     
     void AdjustStats(){
         damage = Mathf.RoundToInt(damage / 1.2f);

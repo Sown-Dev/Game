@@ -11,7 +11,7 @@ public class InventoryManager : MonoBehaviour{
     public InvItem rightEquipped= null;
     
     void Start(){
-
+        Debug.Log(RandomGunGenerator.rngGun);
 
         Insert(  RandomGunGenerator.rngGun.Generate(0.1f) );
         leftEquipped = inventory[0];
@@ -21,6 +21,7 @@ public class InventoryManager : MonoBehaviour{
 
     void Update(){
         if (Input.GetKeyDown(KeyCode.R)){
+            Debug.Log(RandomGunGenerator.rngGun);
             leftEquipped.data= RandomGunGenerator.rngGun.Generate(0.1f) ;
             rightEquipped.data= RandomGunGenerator.rngGun.Generate(0.3f) ;
         }

@@ -35,30 +35,15 @@ public class NormalGun : GunClassMain
             animator.Play("Base Layer.Shoot", 0, 0f);
             //to-do: sound & animation
 
-            GameObject _bullet = Instantiate(bullet, transform.position, Quaternion.Euler(SpreadDirection()));
-            _bullet.GetComponent<Rigidbody2D>().velocity =
-                GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().velocity;
-            _bullet.GetComponent<Rigidbody2D>().angularVelocity = GameObject.FindGameObjectWithTag("Player")
-                .GetComponent<Rigidbody2D>().angularVelocity;
-
-            _bullet.GetComponent<Bullet>().Init(damage, extraVel, col);
-
-            Destroy(_bullet, 5f);
             
+            SpawnBullet(transform.position);
+
 
             nextShot = Time.time + 1f/ (rof/60);
         }
     }
     
-    Vector3 SpreadDirection(){
-        Vector3 targetPos=transform.eulerAngles;
-        targetPos = new Vector3(
-            targetPos.x,
-            targetPos.y,
-            targetPos.z + Random.Range(-spread, spread)
-        );
-        return targetPos;
-    }
+    
     
     void AdjustStats(){
         damage = Mathf.RoundToInt(damage / 1);
