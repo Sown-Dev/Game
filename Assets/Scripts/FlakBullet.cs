@@ -85,13 +85,12 @@ public class FlakBullet : MonoBehaviour, Bullet{
         damage += dmg;
         rb.AddForce(transform.up * velocity);
         col = color;
-        float scale = 0.45f + 0.4f * (dmg / 50);
-        transform.localScale = new Vector3(scale, scale, scale);
+        
     }
 
     public void FlakInit(int _pellets, float _spread, GameObject _bullet){
         pellets = _pellets;
-        spread = _spread *10;
+        spread = _spread *11;
         BulletType = _bullet;
     }
 }

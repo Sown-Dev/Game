@@ -25,10 +25,7 @@ public class RandomGunGenerator : MonoBehaviour{
 
     // order:
     // adjective + adjective2 + baseName + ending
-
-
-    public GameObject[] BulletTypes;
-    public GameObject[] GunTypes;
+    
 
     public int ramp; //increases w/ every generation, resulting in better stats over time
 
@@ -48,18 +45,18 @@ public class RandomGunGenerator : MonoBehaviour{
         ramp++;
 
         //used to equally increment arrays
-        float gIncr = 100f / GunTypes.Length;
-        float bIncr = 100f / BulletTypes.Length;
+        float gIncr = 100f / Utils.main.Guns.Length;
+        float bIncr = 100f / Utils.main.Bullets.Length;
 
         //instantiate a scriptable object which holds the info
         GunData gDat = ScriptableObject.CreateInstance<GunData>();
 
         float gunRand = Random.Range(0, 100 + rarity * 0);
 
-        for (int i = 0; i < GunTypes.Length; i++){
+        for (int i = 0; i < Utils.main.Guns.Length; i++){
             //equally divides the array and checks for random value in range of one of the increments
             if (inRange(gunRand, i * gIncr, (i + 1) * gIncr)){
-                gDat.type = GunTypes[i].GetComponent<GunClass>().type;
+                gDat.type = Utils.main.Guns[i].GetComponent<GunClass>().type;
             }
         }
 
@@ -69,9 +66,9 @@ public class RandomGunGenerator : MonoBehaviour{
         //Now do the same for bullet type
         float bulletRand = Random.Range(0, 80 + rarity * 20);
 
-        for (int i = 0; i < BulletTypes.Length; i++){
+        for (int i = 0; i < Utils.main.Bullets.Length; i++){
             if (inRange(bulletRand, i * bIncr, (i + 1) * bIncr)){
-                gDat.bullet = BulletTypes[i];
+                gDat.bullet = Utils.main.Bullets[i];
             }
         }
 

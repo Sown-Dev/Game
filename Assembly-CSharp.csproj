@@ -77,6 +77,7 @@
      <Compile Include="Assets\Scripts\GunClassMain.cs" />
      <Compile Include="Assets\Scripts\FlakGun.cs" />
      <Compile Include="Assets\Scripts\FlakBullet.cs" />
+     <Compile Include="Assets\Utils.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

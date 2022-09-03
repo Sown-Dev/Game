@@ -17,7 +17,7 @@ public class PlasmaBullet : MonoBehaviour, Bullet
     void Start(){
         col.a = 160;
         float intensity = (col.r + col.g + col.b) / 3f;
-        float factor = 1/intensity;
+        float factor = 6/intensity;
         Color fincol = new Vector4(col.r * factor, col.g * factor, col.b * factor);
         
         gameObject.GetComponent<SpriteRenderer>().material.SetColor("_Color", fincol);

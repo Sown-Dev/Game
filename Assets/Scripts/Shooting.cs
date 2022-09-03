@@ -57,12 +57,12 @@ public class Shooting : MonoBehaviour{
         if (rData != null && rEquip != null){
             if (rData.ID != rEquip.ID){
                 //change weapon
-                rightChange( rEquip);
+                weaponChange( rEquip, rightHolder.transform);
             }
         }
         if (rData == null && rEquip != null){
             //change weapon
-            rightChange( rEquip );
+            weaponChange( rEquip, rightHolder.transform);
         }
         if (rData != null && rEquip == null){
             //change weapon
@@ -81,12 +81,12 @@ public class Shooting : MonoBehaviour{
         if (lData != null && lEquip != null){
             if (lData.ID != lEquip.ID){
                 //change weapon
-                leftChange( lEquip);
+                weaponChange( lEquip, leftHolder.transform);
             }
         }
         if (lData == null && lEquip != null){
             //change weapon
-            leftChange( lEquip );
+            weaponChange( lEquip, leftHolder.transform);
         }
         if (lData != null && lEquip == null){
             //change weapon
@@ -115,53 +115,20 @@ public class Shooting : MonoBehaviour{
         }
     }
 
-    public void leftChange(GunData wep){
-        if (leftHolder.transform.childCount > 0){
-            foreach (Transform child in leftHolder.transform){
-                Destroy(child.gameObject);
-            }
-        }
 
-        GameObject obj = new GameObject();
-        if (wep.type == NormalGun.GetComponent<GunClass>().type){
-            obj = Instantiate(NormalGun, leftHolder.transform);
-        }
-        if (wep.type == DoubleGun.GetComponent<GunClass>().type){
-            obj = Instantiate(DoubleGun, leftHolder.transform);
-        }
-        if (wep.type == ShotGun.GetComponent<GunClass>().type){
-            obj = Instantiate(ShotGun, leftHolder.transform);
-        }
-        if (wep.type == FlakGun.GetComponent<GunClass>().type){
-            obj = Instantiate(FlakGun, leftHolder.transform);
-        }
-
-        GunClass gClass = obj.GetComponent<GunClass>();
-        gClass.data = wep;
-
-
-    }
-
-
-    public void rightChange(GunData wep){
-        if (rightHolder.transform.childCount > 0){
+    public void weaponChange(GunData wep, Transform parent){
+        if (parent.childCount > 0){
             foreach (Transform child in rightHolder.transform){
                 Destroy(child.gameObject);
             }
         }
 
         GameObject obj = new GameObject();
-        if (wep.type == NormalGun.GetComponent<GunClass>().type){
-            obj = Instantiate(NormalGun, rightHolder.transform);
-        }
-        if (wep.type == DoubleGun.GetComponent<GunClass>().type){
-            obj = Instantiate(DoubleGun, rightHolder.transform);
-        }
-        if (wep.type == ShotGun.GetComponent<GunClass>().type){
-            obj = Instantiate(ShotGun, rightHolder.transform);
-        }
-        if (wep.type == FlakGun.GetComponent<GunClass>().type){
-            obj = Instantiate(FlakGun, rightHolder.transform);
+        foreach (GameObject _gun in Utils.main.Guns){
+            if (wep.type == _gun.GetComponent<GunClass>().type){
+                obj = Instantiate(_gun, leftHolder.transform);
+                break;
+            }
         }
 
         GunClass gClass = obj.GetComponent<GunClass>();

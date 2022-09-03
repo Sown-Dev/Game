@@ -57,6 +57,6 @@ public class FlakGun : GunClassMain
         spread /= 1.3f;
         rof /=  5f;
         extraVel /= 1f;
-        pellets =(int) (pellets*2.5);
+        pellets =(int) (pellets*2);
     }
 }
